@@ -18,9 +18,9 @@ public class App
         Console.WriteLine("RunInlineAwaitAsync");
         Console.WriteLine("**********************************************************");
         // add code below
-
-
-        await Task.Delay(0);  // delete after adding your code
+        await DataUtility.DisplayPeopleWithLastNameDietrickUsingQueryExpressionAsync();
+        await DataUtility.DisplayPeopleWithLastNameDietrickUsingApiMethodAsync();
+        await DataUtility.DisplayPeopleWithLastNameWithShePronounThatIsEmployedAsync();
     }
 
     public static async Task RunWhenAllAsync()
@@ -31,9 +31,10 @@ public class App
         Console.WriteLine("RunWhenAllAsync");
         Console.WriteLine("**********************************************************");
         // add code below
-
-
-        await Task.Delay(0);  // delete after adding your code
+        var task1 = DataUtility.DisplayPeopleWithLastNameDietrickUsingApiMethodAsync();
+        var task2 = DataUtility.DisplayPeopleWithLastNameDietrickUsingQueryExpressionAsync();
+        var task3 = DataUtility.DisplayStudentsAsync();
+        await Task.WhenAll(task1, task2, task3); 
     }
 
     public static async Task RunWhenAnyAsync()
@@ -45,8 +46,9 @@ public class App
         Console.WriteLine("RunWhenAnyAsync");
         Console.WriteLine("**********************************************************");
         // add code below
-
-
-        await Task.Delay(0);  // delete after adding your code
+        var task1 = DataUtility.DisplayPeopleWithLastNameDietrickUsingApiMethodAsync();
+        var task2 = DataUtility.DisplayPeopleWithLastNameDietrickUsingQueryExpressionAsync();
+        var task3 = DataUtility.DisplayStudentsAsync();
+        await Task.WhenAny(task1, task2, task3);
     }
 }
